@@ -1,0 +1,514 @@
+/* === Reset CSS === */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* === Variables CSS === */
+:root {
+    --violet: #4F0341;
+    --red-deep: #8E0D3C;
+    --cassis: #1D1842;
+    --corail: #FF595A;
+    --beige:#CAC0B3;
+    --or : #BFA181;
+    --pink: #FDA1A2;
+    --ardoise: #2B3A55;
+    
+    --font-title: 'Raleway', sans-serif;
+    --font-body: 'Poppins', sans-serif;
+}
+
+/* === Style général === */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-body);
+    background: linear-gradient(#1D1842, #4F0341,#1D1842 );
+    background-attachment: fixed; /* Dégradé fixé */
+    background-size: cover;
+    line-height: 1.6;
+}
+
+h1, h2, h3 {
+    font-family: var(--font-title);
+}
+
+body, p, ul, li {
+    font-family: var(--font-body);
+}
+
+header {
+    position: sticky;
+    top: 0;
+    background-color: var(--cassis);
+    color: var(--pink);
+    padding: 1rem 2rem;
+    z-index: 1000;
+    transition: background-color 0.3s ease-in-out;
+}
+
+header .nav-links {
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+}
+
+header .nav-links a {
+    position: relative; /* Nécessaire pour positionner l'élément ::after */
+    text-decoration: none;
+    color: var(--beige);
+    font-family: var(--font-title);
+    transition: color 0.3s ease-in-out;
+}
+
+/* Barre de soulignement (invisible par défaut) */
+header .nav-links a::after {
+    content: ''; /* Élément visuel */
+    position: absolute;
+    left: 0;
+    bottom: -6px; /* Ajuste la distance sous le texte */
+    width: 0%; /* Commence invisible */
+    height: 1px; /* Épaisseur de la barre */
+    background-color: var(--pink); /* Couleur de la barre */
+    transition: width 0.3s ease-in-out; /* Transition pour l'effet d'apparition */
+}
+
+header .nav-links a.active {
+    color: var(--pink); 
+    font-weight: bold;
+}
+
+header .nav-links a:hover {
+    color: var(--pink);
+}
+
+/* Afficher la barre au survol ou si le lien est actif */
+header .nav-links a:hover::after,
+header .nav-links a.active::after {
+    width: 100%; 
+}
+
+/* Cache le menu par défaut sur mobile */
+.nav-links {
+    display: none; 
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--cassis);
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    transform: translateY(-100%); 
+    opacity: 0; 
+    transition: transform 0.3s ease, opacity 0.3s ease; 
+}
+
+.nav-links.active {
+    display: flex; 
+    transform: translateY(0); 
+    opacity: 1; 
+}
+
+.hamburger {
+    display: block;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: var(--beige);
+    cursor: pointer;
+    z-index: 1100; /* Au-dessus du menu */
+}
+
+.hamburger:active {
+    transform: scale(0.9); /* Réduction légère */
+}
+
+/* Cacher le bouton hamburger sur desktop */
+@media (min-width: 768px) {
+    .hamburger {
+        display: none;
+    }
+
+    .nav-links {
+        display: flex; 
+        position: static; 
+        flex-direction: row; 
+        transform: translateY(0); 
+        opacity: 1; 
+    }
+}
+
+
+
+/* === Section À propos === */
+#about {
+    padding: 4rem 2rem;
+    text-align: center;
+    /*background-color: var(--cassis);*/
+    color: var(--pink);
+}
+
+#about h1 {
+    font-family: var(--font-title);
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+#about p {
+    font-size: 1rem;
+    max-width: 600px;
+    margin: 0 auto;
+    color: var(--pink);
+}
+
+/* === Section Compétences === */
+#skills {
+    padding: 6rem 2rem;
+    /*background-color: var(--red-deep);*/
+    color: #FFFFFF;
+}
+
+#skills h2 {
+    font-family: var(--font-title);
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 4rem;
+    color: var(--pink);
+}
+
+.skills-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.skills-category {
+    background: rgba(255, 255, 255, 0.1); 
+    padding: 1.5rem;
+    border-radius: 8px;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.skills-category:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.skills-category h3 {
+    font-family: var(--font-title);
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: var(--beige);
+}
+
+.skills-category ul {
+    list-style: none;
+    padding: 0;
+}
+
+.skills-item {
+    display: inline-block;
+    margin: 0.5rem 0.5rem 0 0;
+    padding: 0.5rem 1rem;
+    background: rgba(255, 255, 255, 0.2); /* Badge transparent */
+    color: var(--beige);
+    font-size: 0.9rem;
+    border-radius: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background 0.3s ease, transform 0.2s;
+}
+
+.skills-item:hover {
+    background: var(--pink);
+    color: var(--violet);
+    transform: scale(1.1);
+}
+
+/* === Section Projets === */
+#projects {
+    padding: 6rem 2rem;
+    /*background-color: var(--violet);*/
+}
+
+#projects h2 {
+    font-family: var(--font-title);
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 4rem;
+    color: var(--pink)
+}
+
+/* Container des cards */
+.projects-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive */
+    gap: 2rem; /* Espacement entre les cards */
+}
+
+/* Style des cards */
+.project-card {
+    position: relative;
+    background: rgba(255, 255, 255, 0.1); 
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+    overflow: hidden;
+}
+
+.project-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); 
+}
+
+/* Contenu du projet */
+.project-content {
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.project-card:hover .project-content {
+    opacity: 0.2; 
+}
+
+/* Titres des cards */
+.project-card h3 {
+    font-family: var(--font-title);
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    color: var(--beige)
+}
+
+/* Texte des cards */
+.project-card p {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    color: var(--beige);
+}
+
+/* Lien au centre */
+.project-link {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(253, 161, 162, 0.9);
+    color: var(--violet);
+    padding: 0.8rem 1.2rem;
+    font-family: var(--font-title);
+    font-size: 1rem;
+    border-radius: 8px;
+    text-decoration: none;
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.project-card:hover .project-link {
+    opacity: 1; 
+    transform: translate(-50%, -50%) scale(1.15); 
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Section Contact */
+#contact {
+    padding: 6rem 2rem;
+    /*background-color: var(--ardoise); */
+    color: var(--beige); 
+    text-align: center;
+}
+
+#contact h2 {
+    font-family: var(--font-title);
+    font-size: 2.5rem;
+    margin-bottom: 4rem;
+    color: var(--pink)
+}
+
+/* Formulaire */
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem; 
+    margin-bottom: 50px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.form-group label {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    color: var(--beige);
+}
+
+.form-group input,
+.form-group textarea {
+    padding: 0.8rem;
+    border: none;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.1); 
+    color: var(--beige);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    background: rgba(255, 255, 255, 0.2); 
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    outline: none; 
+}
+
+.btn-submit {
+    padding: 0.8rem 1.5rem;
+    font-family: var(--font-title);
+    font-size: 1rem;
+    color: var(--cassis);
+    background: var(--beige);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn-submit:hover {
+    background: var(--pink); 
+    color: var(--cassis);
+    transform: scale(1.05); 
+}
+
+.btn-submit:active {
+    transform: scale(0.95); 
+}
+
+/* Liens des réseaux sociaux */
+.contact-link {
+    display: inline-block; 
+    margin: 0.5rem 1rem; 
+    padding: 0.5rem 1rem; 
+    font-family: var(--font-title); 
+    font-size: 1rem;
+    color: var(--beige); 
+    text-decoration: none; 
+    border: 1.5px solid var(--beige); 
+    border-radius: 8px; 
+    transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+.contact-link:hover {
+    background: var(--pink); 
+    color: var(--cassis); 
+    border: 1.5px solid var(--pink);
+    transform: scale(1.1); 
+}
+
+
+/* Espacement entre les sections */
+#contact + footer {
+    margin-top: 4rem;
+}
+
+
+
+/* === Footer === */
+footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: var(--cassis);
+    color: var(--pink);
+    font-family: var(--font-title);
+}
+
+/* === Animation au défilement === */
+[data-animate] {
+    opacity: 0;
+    transform: translateY(100px);
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+/* Délais spécifiques */
+#about[data-animate] {
+    transition-delay: 0s;
+}
+
+#skills[data-animate] {
+    transition-delay: 0.2s; 
+}
+
+#projects[data-animate] {
+    transition-delay: 0.4s; 
+}
+
+#contact[data-animate] {
+    transition-delay: 0.6s; 
+}
+
+/* === Mobile (moins de 768px) === */
+@media (max-width: 768px) {
+     /* Liens en colonne */
+     header .nav-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem; /* Espacement entre les liens */
+    }
+
+    /* Titres et textes réduits */
+    h1, h2 {
+        font-size: 1.5rem;
+    }
+
+    p {
+        font-size: 0.9rem;
+    }
+
+    /* Sections compactes */
+    #about, #skills, #projects, #contact {
+        padding: 2rem 1rem;
+    }
+
+    .skills-container, .projects-container {
+        grid-template-columns: 1fr; /* Une seule colonne */
+        gap: 1rem;
+    }
+
+    /* Footer plus compact */
+    footer p {
+        font-size: 0.8rem;
+        padding: 1rem;
+    }
+}
+
+/* === Tablette (entre 768px et 1024px) === */
+@media (min-width: 768px) and (max-width: 1024px) {
+    /* Titres légèrement réduits */
+    h1, h2 {
+        font-size: 2rem;
+    }
+
+    /* Sections en deux colonnes */
+    .skills-container, .projects-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Footer légèrement compacté */
+    footer p {
+        font-size: 0.9rem;
+    }
+}
+
