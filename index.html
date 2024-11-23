@@ -1,23 +1,58 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+     <!-- Encodage et compatibilité -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portfolio de développeur web - Présentation de mes compétences et projets.">
-    <title>Portfolio - Elodie PAILLER</title>
+    <!-- Titre de la page pour les moteurs de recherche -->
+    <title>Portfolio - Elodie PAILLER - Développeuse Web</title>
+    <!-- Description pour le SEO -->
+    <meta name="description" content="Portfolio de développeuse web présentant mes compétences en HTML, CSS, JavaScript et mes projets récents.">
+    <!-- Preload des polices pour les performances -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Coves:wght@400;700&family=Modeka&display=swap" as="style" type="text/css">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&family=Raleway:wght@400;700&display=swap" as="style" type="text/css">
+    <!-- Importation des polices Google -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Coves:wght@400;700&family=Modeka&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&family=Raleway:wght@400;700&display=swap">
+    <!-- Feuille de styles principale -->
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Coves:wght@400;700&family=Modeka&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&family=Raleway:wght@400;700&display=swap" rel="stylesheet">
-    
+    <!-- Bibliothèque d'icônes Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+
+    <!-- Script EmailJS -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script>
+    (function(){
+        emailjs.init({
+            publicKey: "GOpFxpISRv0H8RGuW",
+        });
+    })();
+    </script>
+    <!-- Données structurées JSON-LD -->
+    <script type="application/ld+json">
+        {
+        "@context": "http://schema.org",
+        "@type": "Person",
+        "name": "Elodie Pailler",
+        "jobTitle": "Développeuse Web",
+        "url": "https://irieload.github.io/Projet-8_Portfolio/",
+        "email": "devweb.creativecode@gmail.com",
+        "sameAs": [
+            "https://linkedin.com/in/elodie-pailler-693217204",
+            "https://github.com/IrieLoad"
+        ]
+        }
+    </script>
 </head>
 <body>
     <header>
         <nav>
             <button class="hamburger" aria-label="Menu">
-                ☰
+                <i class="fas fa-bars"></i>
             </button>
             <ul class="nav-links">
-                <li><a href="#about">À propos</a></li>
+                <li><a href="#about">Accueil</a></li>
+                <li><a href="#formation">Formation</a></li>
                 <li><a href="#skills">Compétences</a></li>
                 <li><a href="#projects">Projets</a></li>
                 <li><a href="#contact">Contact</a></li>
@@ -28,14 +63,54 @@
     <main>
         <!-- Section "À propos" -->
         <section id="about" data-animate>
-            <h1>Bonjour, je suis Elodie</h1>
-            <p>Développeuse web en formation, spécialisée dans la création de sites dynamiques et responsives. <br>
-            Je maîtrise les technologies front-end (HTML, CSS, JavaScript) et back-end (Node.js, MongoDB), et je suis passionnée par le design web. J'accorde aussi beaucoup d'importance aux performances SEO.</p>
+            <h2>À propos de moi</h2>
+            <div class="about-container">
+                <img src="images/Hello-pana.svg" class="about-image" alt="salution">
+                <div class="about-text">
+                    <h1>Bonjour,</h1>
+                    <p>Je suis Elodie, développeuse web en formation, spécialisée dans la création de sites dynamiques et responsives. <br>
+                    Je maîtrise les technologies front-end (HTML, CSS, JavaScript) et back-end (Node.js, MongoDB), et je suis passionnée par le design web. J'accorde aussi beaucoup d'importance aux performances SEO.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section "Formation" -->
+        <section id="formation" data-animate>
+            <h2>
+                <img src="images/formation.png" alt="Icône Formation" loading="lazy">
+                Ma Formation en Développement Web
+            </h2>
+            <div class="formation-content">
+                <p>J'ai suivi une formation intensive en Développement Web avec <strong>OpenClassrooms</strong>, reconnue au niveau bac +2. Ce programme m'a permis d'acquérir les compétences nécessaires pour créer et maintenir des sites web modernes, dynamiques et performants.</p>
+                <div class="formation-details">
+                    <div class="formation-item">
+                        <h3>Durée et méthode</h3>
+                        <p>Une formation de 402 heures supervisées, complétée par 402 heures de travail guidé, basée sur des projets concrets et un accompagnement par un mentor professionnel.</p>
+                    </div>
+                    <div class="formation-item">
+                        <h3>Technologies apprises</h3>
+                        <ul>
+                            <li>HTML5, CSS3, JavaScript</li>
+                            <li>React.js, Node.js, Express</li>
+                            <li>MongoDB, Git/GitHub</li>
+                            <li>Techniques de SEO et Accessibilité</li>
+                        </ul>
+                    </div>
+                    <div class="formation-item">
+                        <h3>Approche pédagogique</h3>
+                        <p>La formation repose sur des mises en situation professionnelles : chaque projet est conçu pour simuler des problématiques réelles rencontrées dans le métier de développeur web.</p>
+                    </div>
+                </div>
+                <p>Cette formation m'a permis de valider un diplôme reconnu par l'État et de préparer efficacement mon entrée dans le monde professionnel.</p>
+            </div>
         </section>
 
         <!-- Section "Compétences" -->
         <section id="skills" data-animate>
-            <h2>Compétences</h2>
+            <h2>
+                <img src="images/competences.png" alt="Icône Compétences" loading="lazy">
+                Compétences
+            </h2>
             <div class="skills-container">
                 <div class="skills-category">
                     <h3>Front-End</h3>
@@ -67,47 +142,65 @@
         
         <!-- Section "Projets" -->
         <section id="projects" data-animate>
-            <h2>Projets</h2>
+            <h2>
+                <img src="path-to-icons/graduation-icon.png" alt="Icône Projets" loading="lazy">
+                Projets
+            </h2>
             <div class="projects-container">
                 <div class="project-card">
                     <div class="project-content">
-                        <h3>Booki</h3>
+                        <h3>Agence de voyage <br>BOOKI</h3>
                         <p>Création de la page d'accueil d'une agence de voyage. Intégration HTML/CSS conforme à une maquette, avec un design responsive.</p>
-                        <p>Compétences développées : HTML, CSS, responsive design, versionnement avec Git/GitHub.</p>
+                        <p>Compétences développées :<br>HTML, CSS, responsive design, versionnement avec Git/GitHub.</p>   
                     </div>
-                    <a href="https://github.com/votre-projet-booki" target="_blank" class="project-link">Voir le projet</a>  
+                    <div class="project-image-wrapper">
+                        <img src="images//booki_11zon.webp" alt="Image du projet Booki">
+                        <a href="https://github.com/IrieLoad/Projet-2_Creez-la-page-d-accueil-d-une-agence-de-voyage-avec-HTML-CSS" target="_blank" class="project-link">GitHub</a>
+                    </div>
                 </div>
                 <div class="project-card">
                     <div class="project-content">
-                        <h3>Site photographe</h3>
+                        <h3>Photographe<br>Nina CARDUCCI</h3>
                         <p>Optimisation d'un site pour améliorer ses performances SEO et corriger des bugs. Utilisation de Chrome DevTools pour le débogage et rédaction d'un cahier de recette.</p>
-                        <p>Compétences développées : SEO, optimisation des performances, debugging.</p>
-                    </div>    
-                    <a href="https://github.com/votre-projet-photographe" target="_blank" class="project-link">Voir le projet</a>
+                        <p>Compétences développées :<br>SEO, optimisation des performances, debugging.</p>
+                    </div>
+                    <div class="project-image-wrapper">
+                        <img src="images/nina-carducci_11zon.webp" alt="Image du projet de la photographe Nina CARDUCCI">
+                        <a href="https://github.com/IrieLoad/Projet-4_Debuggez-et-optimiser-un-site-de-photographe" target="_blank" class="project-link">GitHub</a>
+                    </div>
                 </div>
                 <div class="project-card">
                     <div class="project-content">
-                        <h3>Site de l'architecte Sophie Bluel</h3>
+                        <h3>Architecte d'intérieur<br>Sophie BLUEL</h3>
                         <p>Création d'une page dynamique avec JavaScript permettant une gestion d'événements utilisateurs et des interactions avec une API.</p>
-                        <p>Compétences développées : DOM, gestion des événements, récupération des données utilisateur.</p>
+                        <p>Compétences développées :<br>DOM, gestion des événements, récupération des données utilisateur.</p>
                     </div>
-                    <a href="https://github.com/votre-projet-architecte" target="_blank" class="project-link">Voir le projet</a>
+                    <div class="project-image-wrapper">
+                        <img src="images/sohpie-bluel_11zon.webp" alt="Image du projet de l'architecte d'intérieur Sophie BLUEL">
+                        <a href="https://github.com/IrieLoad/Projet-3_Creer-une-page-web-dynamique-avec-JavaScript" target="_blank" class="project-link">GitHub</a>
+                    </div>
                 </div>
                 <div class="project-card">
                     <div class="project-content">
-                        <h3>Kasa</h3>
+                        <h3>Location immobilière <br>KASA</h3>
                         <p>Développement d'une application web pour la location immobilière. Création d'une interface utilisateur avec React et intégration de React Router pour la navigation.</p>
-                        <p>Compétences développées : React, React Router, Sass, CSS animations.</p>
+                        <p>Compétences développées :<br>React, React Router, Sass, CSS animations.</p>
                     </div>
-                    <a href="https://github.com/votre-projet-kasa" target="_blank" class="project-link">Voir le projet</a>
+                    <div class="project-image-wrapper">
+                        <img src="images/kasa_11zon.webp" alt="Image du projet KASA">
+                        <a href="https://github.com/IrieLoad/my-app-kasa" target="_blank" class="project-link">GitHub</a>
+                    </div>
                 </div>
             </div>    
         </section>
 
         <!-- Section "Contact" -->
         <section id="contact" data-animate>
-            <h2>Contactez-moi</h2>
-            <form class="contact-form">
+            <h2>
+                <img src="images/contact.png" alt="Icône Contact" loading="lazy">
+                Contactez-moi
+            </h2>
+            <form class="contact-form" id="form" onsubmit="sendEmail(); return false;">
                 <div class="form-group">
                     <label for="name">Nom :</label>
                     <input type="text" id="name" name="name" placeholder="Votre nom" required>
@@ -122,10 +215,27 @@
                 </div>
                 <button type="submit" class="btn-submit">Envoyer</button>
             </form>
+            <script>
+                function sendEmail() {
+                    const messageParams = {
+                        name: document.getElementById('name').value,
+                        email: document.getElementById('email').value,
+                        message: document.getElementById('message').value
+                    };
+                    emailjs.send('service_lz4n8qh','template_cd51qgc', messageParams)
+                        .then(function (response) {
+                            console.log('Success!', response.status, response.text);
+                            document.getElementById('form').reset();
+                            alert('Email sent successfully!');
+                        }, function (error) {
+                            console.log('FAILED...', error);
+                        });
+                }
+            </script>
             <p>Retrouvez-moi sur :</p>
             <ul>
-                <li><a href="https://www.linkedin.com/" target="_blank" class="contact-link">LinkedIn</a></li>
-                <li><a href="https://github.com/" target="_blank" class="contact-link">GitHub</a></li>
+                <li><a href="https://linkedin.com/in/elodie-pailler-693217204" target="_blank" class="contact-link">LinkedIn</a></li>
+                <li><a href="https://github.com/IrieLoad" target="_blank" class="contact-link">GitHub</a></li>
             </ul>
         </section>
     </main>
