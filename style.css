@@ -44,8 +44,6 @@ h3 {
     font-size: 2rem;
 }
 
-
-
 /* Style pour les titres avec icônes PNG */
 section h2 {
     display: flex;
@@ -64,6 +62,42 @@ section h2 img {
 body, p, ul, li {
     font-family: var(--font-body);
     font-size: 1.2rem;
+}
+
+strong {
+    font-weight: normal; /* Désactive le gras */
+}
+
+/* === Animation au défilement === */
+/* État caché par défaut */
+[data-animate] {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+/* Styles pour les sections visibles */
+/* État visible */
+.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Délais spécifiques */
+#about[data-animate] {
+    transition-delay: 0s;
+}
+
+#skills[data-animate] {
+    transition-delay: 0.2s; 
+}
+
+#projects[data-animate] {
+    transition-delay: 0.4s; 
+}
+
+#contact[data-animate] {
+    transition-delay: 0.6s; 
 }
 
 /* === HEADER === */
@@ -130,6 +164,7 @@ header .nav-links a:hover::after {
 }
 
 #about h2 {
+    justify-content: left;
     margin-bottom: 3rem;
     color: var(--pink);
 }
@@ -166,6 +201,11 @@ header .nav-links a:hover::after {
 .about-text p {
     line-height: 1.8;
     color: var(--beige);
+}
+
+/* Animation smooth avec délai */
+#about.visible, #formation.visible {
+    transition-delay: 0.2s; 
 }
 
 /* === SECTION FORMATION === */
@@ -511,30 +551,6 @@ footer {
     background-color: var(--cassis);
     color: var(--pink);
     font-family: var(--font-title);
-}
-
-/* === Animation au défilement === */
-[data-animate] {
-    opacity: 0;
-    transform: translateY(100px);
-    transition: opacity 1s ease, transform 1s ease;
-}
-
-/* Délais spécifiques */
-#about[data-animate] {
-    transition-delay: 0s;
-}
-
-#skills[data-animate] {
-    transition-delay: 0.2s; 
-}
-
-#projects[data-animate] {
-    transition-delay: 0.4s; 
-}
-
-#contact[data-animate] {
-    transition-delay: 0.6s; 
 }
 
 /* === Mobile (moins de 768px) === */

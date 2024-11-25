@@ -1,29 +1,46 @@
-// === Fonction pour vérifier si un élément est visible dans la fenêtre ===
-function isVisible(element) {
-    const rect = element.getBoundingClientRect(); // Récupère la position et la taille de l'élément par rapport à la fenêtre
-    return rect.top < window.innerHeight; // Retourne 'true' si le haut de l'élément est dans la fenêtre visible
-}
-
-// === Animation des sections lors du défilement ===
-function animateOnScroll() {
-    const elements = document.querySelectorAll('[data-animate]'); // Sélectionne tous les éléments ayant l'attribut 'data-animate'
-    elements.forEach((element) => {
-        if (isVisible(element)) {
-            element.style.opacity = '1'; // Rend l'élément visible
-            element.style.transform = 'translateY(0)'; // Remet l'élément à sa position d'origine
+// Attendre que tout le contenu HTML de la page soit chargé avant d'exécuter ce code
+document.addEventListener('DOMContentLoaded', () => {
+    // Étape 1 : Afficher immédiatement les sections spécifiques ("À propos" et "Formation")
+    const immediateSections = ['#about', '#formation']; // Liste des ID des sections à afficher directement
+    immediateSections.forEach(selector => {
+        const section = document.querySelector(selector); // Trouver chaque section dans le DOM
+        if (section) { // Vérifier que la section existe
+            section.classList.add('visible'); // Ajouter la classe "visible" pour rendre la section visible
         }
     });
-}
 
-// === Initialisation : rend les éléments invisibles par défaut ===
-document.querySelectorAll('[data-animate]').forEach((element) => {
-    element.style.opacity = '0'; // Rends l'élément invisible
-    element.style.transform = 'translateY(50px)'; // Décale l'élément légèrement vers le bas
-    element.style.transition = 'opacity 0.6s ease, transform 0.6s ease'; // Applique une transition douce pour l'animation
+    // Étape 2 : Initialiser les animations pour les autres sections (au défilement)
+    initScrollAnimations();
 });
 
-// Ajoute un écouteur d'événements pour déclencher l'animation lorsque l'utilisateur défile
-window.addEventListener('scroll', animateOnScroll);
+// Fonction pour gérer les animations au défilement
+function initScrollAnimations() {
+    // Sélectionner toutes les sections qui ont l'attribut [data-animate]
+    const elements = document.querySelectorAll('[data-animate]');
+
+    // Sous-fonction : Vérifier si un élément est visible dans la fenêtre du navigateur
+    const isVisible = (element) => {
+        const rect = element.getBoundingClientRect(); // Obtenir la position de l'élément par rapport à la fenêtre
+        // Vérifier si une partie de l'élément est visible (haut ou bas de l'élément dans la fenêtre)
+        return rect.top < window.innerHeight && rect.bottom > 0;
+    };
+
+    // Sous-fonction : Ajouter la classe "visible" aux éléments visibles
+    const animateOnScroll = () => {
+        elements.forEach(element => {
+            if (isVisible(element)) { // Si l'élément est visible
+                element.classList.add('visible'); // Ajouter la classe "visible" pour l'afficher avec une animation
+            }
+        });
+    };
+
+    // Exécuter une première fois au chargement (pour les éléments déjà visibles)
+    animateOnScroll();
+
+    // Réécouter l'événement "scroll" pour détecter quand l'utilisateur défile
+    window.addEventListener('scroll', animateOnScroll);
+}
+
 
 // === Validation et gestion de l'envoi du formulaire ===
 document.querySelector('.contact-form').addEventListener('submit', (event) => {
@@ -47,7 +64,7 @@ document.querySelector('.contact-form').addEventListener('submit', (event) => {
     }
 
     // Si tout est correct, affiche un message de succès
-    alert('Merci, votre message a été envoyé !');
+    alert('Merci, votre message a été envoyé !');
 });
 
 // === Ajout d'une navigation douce pour les liens dans le header ===
@@ -74,8 +91,6 @@ function updateActiveLink() {
     const sections = document.querySelectorAll('section'); // Sélectionne toutes les sections
     const links = document.querySelectorAll('header .nav-links a'); // Sélectionne tous les liens du menu
 
-    let currentActiveLink = null;
-
     sections.forEach(section => {
         const rect = section.getBoundingClientRect(); // Récupère la position de la section par rapport à la fenêtre
         if (rect.top <= 150 && rect.bottom > 150) { // Vérifie si la section est visible
@@ -96,16 +111,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const hamburger = document.querySelector('.hamburger'); // Sélectionne le bouton hamburger
     const navLinks = document.querySelector('.nav-links'); // Sélectionne le menu déroulant
 
-    // Ouvre ou ferme le menu mobile lorsqu'on clique sur le hamburger
-    hamburger.addEventListener('click', () => {
-        navLinks.classList.toggle('active'); // Ajoute ou enlève la classe 'active' pour afficher/masquer le menu
-    });
+        // Ouvre ou ferme le menu mobile lorsqu'on clique sur le hamburger
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active'); // Ajoute ou enlève la classe 'active' pour afficher/masquer le menu
+        });
 
-    // Ferme le menu mobile lorsqu'on clique sur un lien
-    const navLinkItems = document.querySelectorAll('.nav-links a');
-    navLinkItems.forEach(link => {
-    link.addEventListener('click', () => {
-        navLinks.classList.remove('active');
+        // Ferme le menu mobile lorsqu'on clique sur un lien
+        const navLinkItems = document.querySelectorAll('.nav-links a');
+        navLinkItems.forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+        });
     });
-});
 });
