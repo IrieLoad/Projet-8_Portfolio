@@ -74,6 +74,8 @@ function updateActiveLink() {
     const sections = document.querySelectorAll('section'); // Sélectionne toutes les sections
     const links = document.querySelectorAll('header .nav-links a'); // Sélectionne tous les liens du menu
 
+    let currentActiveLink = null;
+
     sections.forEach(section => {
         const rect = section.getBoundingClientRect(); // Récupère la position de la section par rapport à la fenêtre
         if (rect.top <= 150 && rect.bottom > 150) { // Vérifie si la section est visible
@@ -93,7 +95,6 @@ window.addEventListener('scroll', updateActiveLink);
 document.addEventListener('DOMContentLoaded', () => {
     const hamburger = document.querySelector('.hamburger'); // Sélectionne le bouton hamburger
     const navLinks = document.querySelector('.nav-links'); // Sélectionne le menu déroulant
-    const navLinkItems = document.querySelectorAll('.nav-links a'); // Sélectionne tous les liens du menu
 
     // Ouvre ou ferme le menu mobile lorsqu'on clique sur le hamburger
     hamburger.addEventListener('click', () => {
@@ -101,9 +102,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Ferme le menu mobile lorsqu'on clique sur un lien
+    const navLinkItems = document.querySelectorAll('.nav-links a');
     navLinkItems.forEach(link => {
-        link.addEventListener('click', () => {
-            navLinks.classList.remove('active'); // Masque le menu déroulant après le clic
-        });
+    link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
     });
+});
 });
